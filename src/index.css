@@ -37,7 +37,8 @@ h1 {
   height: 200px;
   width: 200px;
   display: inline-flex;
-
+  justify-content: center;
+  align-items: center;
 }
 
 .card-container {
@@ -49,13 +50,14 @@ h1 {
   margin: 16px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   list-style: none;
-  flex: 1;
-  flex-direction: row;
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  position: relative;
+}
 
+.module-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .kanban-board {
@@ -64,9 +66,18 @@ h1 {
   width: 100%;
 }
 
-.add-modules-button {
+.add-module {
+  position: relative;
+  text-align: center;
+  line-height: 200px;
+}
+
+.add-module span {
   position: absolute;
-  bottom: 0;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+  color: #ccc;
+  cursor: pointer;
 }

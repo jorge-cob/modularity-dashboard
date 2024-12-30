@@ -11,5 +11,5 @@ export const availableModulesAtom: Atom<Module[]> = atom([
 
 ]);
 export const activeModulesAtom: Atom<Module[]> = atom([
-  {id: "7", name: "active shit nigga"},
+  {id: "7", name: "active square"},
 ]);

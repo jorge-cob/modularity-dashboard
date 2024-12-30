@@ -1,8 +1,11 @@
 
-const Card = ({children}: {children: React.ReactNode} ) => {
+const Card = ({id, onClick, children}: {id?: string , onClick?: () => void, children: React.ReactNode} ) => {
   return (
-    <li className="card" >
-      {children}
+    <li className="card" id={id} onClick={onClick}>
+ 
+        {children}
+      
+      
     </li>
   );  
 }

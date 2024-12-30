@@ -3,7 +3,6 @@ import { useAtom } from "jotai";
 import { availableModulesAtom, activeModulesAtom } from "../atoms";
 import { animations } from "@formkit/drag-and-drop";
 import { dragAndDrop } from "@formkit/drag-and-drop/react";
-import AddModulesButton from "./AddModulesButton";
 import ModulesBoard from "./ModulesBoard";
 
 export default function Dashboard() {
@@ -21,6 +20,8 @@ export default function Dashboard() {
       state: [availableModules, setAvailableModules], 
       group: "modulesList",
       plugins: [animations()],
+      draggable: (card) => card.id !== "no-drag"
+             
     });
   }, [availableModules, setAvailableModules]);
 
@@ -31,6 +32,7 @@ export default function Dashboard() {
       state: [activeModules, setActiveModules], 
       group: "modulesList",
       plugins: [animations()],
+      draggable: (card) => card.id !== "no-drag"
     });
   }, [activeModules, setActiveModules]);
 
@@ -44,8 +46,7 @@ export default function Dashboard() {
       <ModulesBoard
         modules={availableModules}
         modulesRef={availableModulesRef}
-        button={<AddModulesButton />}
-
+        button
       />
    
     

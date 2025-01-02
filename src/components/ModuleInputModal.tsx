@@ -1,6 +1,9 @@
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
+import { useSetAtom } from "jotai";
+import { availableModulesAtom } from '../atoms';
+import { useState } from 'react';
 
 const style = {
   position: 'absolute',
@@ -16,7 +19,19 @@ const style = {
 
 export default function ModuleInputModal({open, setOpen}: {open: boolean, setOpen: (open: boolean) => void}) {
   const handleClose = () => setOpen(false);
+  const setAvailableModules = useSetAtom(availableModulesAtom);
+  const [newModuleName, setNewModuleName] = useState('');
 
+  const handleNewModule = () => {
+    const newModule = {
+      id: crypto.randomUUID(),
+      name: newModuleName
+    }
+    setAvailableModules((prev) => [...prev, newModule]);
+    handleClose();
+  }
+    
+  
   return (
     <div>
       <Modal
@@ -30,7 +45,9 @@ export default function ModuleInputModal({open, setOpen}: {open: boolean, setOpe
           required
           id="outlined-required"
           label="Module name"
+          onChange={(e) => setNewModuleName(e.target.value)}
         />
+        <Button onClick={handleNewModule}>Submit</Button>
         </Box>
       </Modal>
     </div>

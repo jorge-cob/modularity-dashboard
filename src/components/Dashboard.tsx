@@ -38,7 +38,6 @@ export default function Dashboard() {
 
   return (
     <div className="kanban-board">
-      
       <ModulesBoard
         modules={activeModules}
         modulesRef={activeModulesRef}
@@ -47,9 +46,7 @@ export default function Dashboard() {
         modules={availableModules}
         modulesRef={availableModulesRef}
         button
-      />
-   
-    
+      /> 
     </div>
   );
 };

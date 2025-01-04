@@ -4,6 +4,8 @@ import ModuleCard from "./ModuleCard";
 import AddIcon from '@mui/icons-material/Add';
 import ModuleInputModal from "./ModuleInputModal";
 import { useState } from "react";
+import { Typography } from '@mui/material';
+
 
 export default function ModulesBoard({modules, modulesRef, button}: {modules: Module[], modulesRef: React.RefObject<HTMLUListElement>, button?: boolean}) {
   const [open, setOpen] = useState(false);
@@ -13,7 +15,15 @@ export default function ModulesBoard({modules, modulesRef, button}: {modules: Mo
       <ul ref={modulesRef} className="module-list" >
         {modules.map((module) => (
           <ModuleCard key={module.id}>
-            <p>{module.name}</p>
+            <Typography sx={{ 
+              textOverflow: 'ellipsis', 
+              display: '-webkit-box', 
+              WebkitLineClamp: 3, 
+              WebkitBoxOrient: 'vertical', 
+              wordBreak: 'break-word', 
+            }}>
+              {module.name}
+            </Typography>
           </ModuleCard>
         ))}
         {button && 
